@@ -48,10 +48,10 @@ def test_local_sender_receiver_roundtrip():
             line = receiver.stdout.readline()
             if line:
                 collected.append(line)
-                if "Đang lắng nghe" in line:
+                if "Listening on" in line:
                     started = True
                     break
-        assert started, "Receiver không khởi động đúng. Output: " + "".join(collected)
+        assert started, "Receiver did not start correctly. Output: " + "".join(collected)
 
         sender = subprocess.run(
             [sys.executable, "sender.py"],
@@ -65,11 +65,11 @@ def test_local_sender_receiver_roundtrip():
         receiver_out, _ = receiver.communicate(timeout=10)
         full_receiver_output = "".join(collected) + receiver_out
 
-        assert "[+] Đã gửi bản mã." in sender.stdout
+        assert "[+] Sent ciphertext." in sender.stdout
         assert "Key:" in sender.stdout
         assert "IV:" in sender.stdout
         assert "Ciphertext:" in sender.stdout
-        assert "[+] Bản tin gốc: Xin chao FIT4012 - local integration test" in full_receiver_output
+        assert "[+] Plaintext message: Xin chao FIT4012 - local integration test" in full_receiver_output
     finally:
         if receiver.poll() is None:
             receiver.kill()

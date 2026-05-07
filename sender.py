@@ -1,6 +1,10 @@
 import os
 import socket
+import sys
 from des_socket_utils import encrypt_des_cbc, build_packet
+
+if sys.stdout.encoding is None or sys.stdout.encoding.lower() != 'utf-8':
+    sys.stdout.reconfigure(encoding='utf-8')
 
 SERVER_IP = os.getenv('SERVER_IP', '127.0.0.1')
 SERVER_PORT = int(os.getenv('SERVER_PORT', '6000'))
@@ -25,7 +29,7 @@ def main() -> None:
         s.sendall(overall)
 
     lines = [
-        "[+] Đã gửi bản mã.",
+        "[+] Sent ciphertext.",
         f"Key: {key.hex()}",
         f"IV: {iv.hex()}",
         f"Ciphertext: {cipher_bytes.hex()}",

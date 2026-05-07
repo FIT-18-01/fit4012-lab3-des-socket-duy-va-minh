@@ -1,6 +1,10 @@
 import os
 import socket
+import sys
 from des_socket_utils import HEADER_SIZE, parse_header, recv_exact, decrypt_des_cbc
+
+if sys.stdout.encoding is None or sys.stdout.encoding.lower() != 'utf-8':
+    sys.stdout.reconfigure(encoding='utf-8')
 
 HOST = os.getenv('RECEIVER_HOST', '0.0.0.0')
 PORT = int(os.getenv('RECEIVER_PORT', '6000'))
@@ -15,16 +19,16 @@ def main() -> None:
         s.bind((HOST, PORT))
         s.listen(1)
         s.settimeout(TIMEOUT)
-        print(f"Đang lắng nghe {HOST}:{PORT}...")
+        print(f"Listening on {HOST}:{PORT}...")
         conn, addr = s.accept()
         with conn:
-            print(f"Kết nối từ {addr}")
+            print(f"Connection from {addr}")
             header = recv_exact(conn, HEADER_SIZE)
             key, iv, length = parse_header(header)
             cipher_bytes = recv_exact(conn, length)
             plaintext = decrypt_des_cbc(key, iv, cipher_bytes)
             message = plaintext.decode('utf-8', errors='ignore')
-            line = f"[+] Bản tin gốc: {message}"
+            line = f"[+] Plaintext message: {message}"
             print(line)
 
             if OUTPUT_FILE:
