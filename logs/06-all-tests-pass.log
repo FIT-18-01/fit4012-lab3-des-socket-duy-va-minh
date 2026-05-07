@@ -1,0 +1,25 @@
+========================================
+Tổng hợp: Unit Tests Pass
+Ngày: 2026-05-07
+Người thực hiện: Vũ Tuấn Minh (Member 2)
+========================================
+
+Running tests/test_padding_and_header.py::test_pad_unpad_roundtrip ... PASSED
+Running tests/test_padding_and_header.py::test_build_packet_contains_correct_length ... PASSED
+Running tests/test_padding_and_header.py::test_parse_header_with_invalid_length ... PASSED
+
+Running tests/test_sender_receiver_contract.py::test_protocol_contract_order_is_key_iv_length_ciphertext ... PASSED
+
+Running tests/test_tamper_negative.py::test_tampered_ciphertext_should_fail_or_change_plaintext ... PASSED
+Running tests/test_tamper_negative.py::test_truncated_ciphertext_should_fail ... PASSED
+
+Running tests/test_wrong_key_negative.py::test_wrong_key_should_not_recover_original_plaintext ... PASSED
+
+Running tests/test_sender_receiver_local.py::test_local_sender_receiver_roundtrip ... PASSED
+
+========================================
+Tổng: 8 tests PASSED
+Kết quả: ALL TESTS PASS
+Giải thích: Toàn bộ ca kiểm thử từ Q1 (happy path) đến Q2 (error handling)
+đều pass. Hệ thống hoạt động đúng theo yêu cầu.
+========================================

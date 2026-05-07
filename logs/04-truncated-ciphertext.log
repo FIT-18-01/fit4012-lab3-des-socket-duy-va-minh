@@ -1,0 +1,17 @@
+========================================
+Ca test: Truncated Ciphertext
+Ngày: 2026-05-07
+Người thực hiện: Vũ Tuấn Minh (Member 2)
+========================================
+
+[12:45:40] Starting Receiver on 127.0.0.1:6004
+[12:45:40] Listening on 127.0.0.1:6004...
+[12:45:41] Connection from ('127.0.0.1', 54324)
+[12:45:41] [-] Decryption or parsing error: Padding không hợp lệ.
+
+========================================
+Kết quả: PASS
+Giải thích: Sender gửi ciphertext bị cắt ngắn (thiếu 8 byte cuối).
+Receiver cố gắng giải mã nhưng phát hiện padding không hợp lệ
+vì dữ liệu không đầy đủ. Lỗi được ghi log chính xác.
+========================================

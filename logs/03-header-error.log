@@ -1,0 +1,16 @@
+========================================
+Ca test: Header Length Mismatch
+Ngày: 2026-05-07
+Người thực hiện: Vũ Tuấn Minh (Member 2)
+========================================
+
+[12:40:30] Starting Receiver on 127.0.0.1:6003
+[12:40:30] Listening on 127.0.0.1:6003...
+[12:40:31] Connection from ('127.0.0.1', 54323)
+[12:40:32] [-] Connection error: Kết nối bị đóng trước khi nhận đủ dữ liệu.
+
+========================================
+Kết quả: PASS
+Giải thích: Header chỉ định độ dài 100 byte nhưng Sender chỉ gửi 64 byte.
+Receiver phát hiện lỗi và log ra thông báo Connection error.
+========================================

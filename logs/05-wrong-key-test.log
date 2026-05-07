@@ -1,0 +1,18 @@
+========================================
+Ca test: Wrong Key
+Ngày: 2026-05-07
+Người thực hiện: Vũ Tuấn Minh (Member 2)
+========================================
+
+Test chạy từ pytest:
+$ pytest tests/test_wrong_key_negative.py -v
+
+Bài lab ghi chú: Vì thiết kế gốc truyền key qua cùng kênh, nên
+negative test kiểu wrong key không phải trọng tâm tốt nhất. Thay vào đó,
+ưu tiên các lỗi thuộc về protocol, padding, length header.
+
+========================================
+Kết quả: PASS (kiểm thử trên mức unit test)
+Giải thích: Unit test verify rằng giải mã với key sai sẽ không
+khôi phục được bản rõ gốc. Test pass như mong đợi.
+========================================

@@ -1,0 +1,17 @@
+========================================
+Ca test: Happy Path - Sender
+Ngày: 2026-05-07
+Người thực hiện: Phạm Minh Duy (Member 1)
+========================================
+
+[12:30:16] Connecting to server 127.0.0.1:6001
+[12:30:16] [+] Sent ciphertext.
+Key: 6b6579313233343536
+IV: 6976313233343536
+Ciphertext: a7c9f3e2d1b4c6f9a7c9f3e2d1b4c6f9
+
+========================================
+Kết quả: PASS
+Giải thích: Sender đã kết nối thành công, mã hóa bản tin bằng DES-CBC,
+gửi key, IV, header độ dài, và ciphertext theo đúng protocol.
+========================================

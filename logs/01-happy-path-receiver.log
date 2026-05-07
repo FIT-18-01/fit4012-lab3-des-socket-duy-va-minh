@@ -1,0 +1,16 @@
+========================================
+Ca test: Happy Path - Receiver
+Ngày: 2026-05-07
+Người thực hiện: Vũ Tuấn Minh (Member 2)
+========================================
+
+[12:30:15] Starting Receiver on 127.0.0.1:6001
+[12:30:15] Listening on 127.0.0.1:6001...
+[12:30:16] Connection from ('127.0.0.1', 54321)
+[12:30:16] [+] Plaintext message: Xin chao FIT4012 - Happy Path Test
+
+========================================
+Kết quả: PASS
+Giải thích: Receiver đã nhận được kết nối từ Sender, giải mã thành công
+và in ra bản rõ đúng như kỳ vọng.
+========================================

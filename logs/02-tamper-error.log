@@ -1,0 +1,16 @@
+========================================
+Ca test: Tampered Ciphertext
+Ngày: 2026-05-07
+Người thực hiện: Vũ Tuấn Minh (Member 2)
+========================================
+
+[12:35:20] Starting Receiver on 127.0.0.1:6002
+[12:35:20] Listening on 127.0.0.1:6002...
+[12:35:21] Connection from ('127.0.0.1', 54322)
+[12:35:21] [-] Decryption or parsing error: Padding PKCS#7 không hợp lệ.
+
+========================================
+Kết quả: PASS
+Giải thích: Receiver phát hiện padding không hợp lệ khi ciphertext bị
+sửa đổi trong quá trình truyền. Lỗi được log chính xác.
+========================================
