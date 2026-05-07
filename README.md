@@ -12,18 +12,18 @@ Bài lab bám theo luồng hệ thống trong file hướng dẫn: Sender tạo 
 - Khi demo, giảng viên có thể hỏi chéo bất kỳ thành viên nào về **sender**, **receiver**, **DES-CBC**, **padding**, **threat model** và **ethics**.
 
 ## Team members
-- **Thành viên 1**: TODO_MEMBER_1 - MSSV: TODO_MEMBER_1_ID
-- **Thành viên 2**: TODO_MEMBER_2 - MSSV: TODO_MEMBER_2_ID
+- **Thành viên 1**: Phạm Minh Duy - MSSV: 1871020192
+- **Thành viên 2**: Vũ Tuấn Minh - MSSV: 1871020394
 
 ## Task division
-- **Thành viên 1 phụ trách chính**: TODO_ROLE_MEMBER_1
-- **Thành viên 2 phụ trách chính**: TODO_ROLE_MEMBER_2
-- **Phần làm chung**: TODO_SHARED_WORK
+- **Thành viên 1 phụ trách chính**: Sender và báo cáo Q1
+- **Thành viên 2 phụ trách chính**: Receiver, tests, logs, threat model, Q2
+- **Phần làm chung**: Code review, peer review, ethics, README
 
 ## Demo roles
-- **Bạn nào demo Sender / gói tin / log gửi**: TODO_DEMO_ROLE_1
-- **Bạn nào demo Receiver / giải mã / log nhận**: TODO_DEMO_ROLE_2
-- **Cả hai cùng trả lời threat model và ethics**: TODO_DEMO_ROLE_SHARED
+- **Bạn nào demo Sender / gói tin / log gửi**: Thành viên 1 (Phạm Minh Duy)
+- **Bạn nào demo Receiver / giải mã / log nhận**: Thành viên 2 (Vũ Tuấn Minh)
+- **Cả hai cùng trả lời threat model và ethics**: Cả hai
 
 ## Mục tiêu học tập
 - Hiểu luồng hoạt động của hệ thống Sender/Receiver qua TCP socket.
@@ -90,6 +90,13 @@ SERVER_IP=127.0.0.1 SERVER_PORT=6001 MESSAGE="Xin chao FIT4012" python sender.py
 - `tests/` có ít nhất 5 test
 - `logs/` có log chạy thật của các ca kiểm thử
 - thông tin **nhóm 2 người + phân công** trong `README.md`
+
+## Ethics & Safe use
+- **Chỉ thử nghiệm trên localhost hoặc mạng học tập được phép**: Không chạy chương trình này trên máy thật ngoài môi trường lab, không scan port hay gửi dữ liệu tới máy lạ.
+- **Chỉ dùng dữ liệu giả lập**: Không mã hóa dữ liệu thật, bí mật, hoặc thông tin nhạy cảm. Chỉ dùng bản tin mẫu như "Xin chao FIT4012" để test.
+- **Không sử dụng bài này để nghe lén, sửa gói tin, hoặc tấn công hệ thống thật**: Đây là bài tập học thuật, không phải công cụ bảo mật thực tế.
+- **Nguồn thư viện**: Sử dụng `pycryptodome` cho DES encryption, nguồn từ PyPI (https://pypi.org/project/pycryptodome/).
+- **Attribution**: Code tham khảo từ hướng dẫn lab FIT4012, không copy từ nguồn ngoài.
 
 ## Threat-model awareness
 Vì lab này đang dùng mô hình **gửi key và IV dưới dạng plaintext trên cùng luồng TCP**, bạn cần chỉ ra đây là điểm yếu bảo mật nghiêm trọng nếu đưa ra thực tế. Trong `threat-model-1page.md`, hãy nêu rõ:

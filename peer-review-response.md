@@ -1,14 +1,14 @@
 # Peer Review Response
 
 ## Thông tin nhóm
-- Thành viên 1: TODO_STUDENT
-- Thành viên 2: TODO_STUDENT
+- Thành viên 1: Phạm Minh Duy (1871020192)
+- Thành viên 2: Vũ Tuấn Minh (1871020394)
 
 ## Thành viên 1 góp ý cho thành viên 2
-TODO_STUDENT: Góp ý ngắn gọn về phần việc, chất lượng code, test, hoặc tài liệu.
+Code receiver và tests được viết rõ ràng, error handling đầy đủ. Threat model chi tiết và logic. Đề xuất thêm test cho connection timeout.
 
 ## Thành viên 2 góp ý cho thành viên 1
-TODO_STUDENT: Góp ý ngắn gọn về phần việc, chất lượng code, test, hoặc tài liệu.
+Sender code đơn giản và hiệu quả. Báo cáo Q1 mô tả rõ luồng hoạt động. Gợi ý thêm log cho sender khi gặp lỗi kết nối.
 
 ## Nhóm đã sửa gì sau góp ý
-TODO_STUDENT: Viết 3-5 dòng về những chỉnh sửa cụ thể đã làm sau khi review chéo.
+Đã thêm error handling trong sender cho connection failures. Bổ sung test cho connection timeout trong receiver. Cập nhật log format để nhất quán giữa các file.

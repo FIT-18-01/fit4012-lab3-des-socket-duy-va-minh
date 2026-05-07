@@ -12,3 +12,15 @@ def test_tampered_ciphertext_should_fail_or_change_plaintext():
         assert recovered != plain
     except ValueError:
         assert True
+
+
+def test_truncated_ciphertext_should_fail():
+    plain = b"Thong diep dung de test truncated"
+    key, iv, cipher_bytes = encrypt_des_cbc(plain, key=b"12345678", iv=b"abcdefgh")
+    truncated = cipher_bytes[:-8]  # remove last block
+
+    try:
+        recovered = decrypt_des_cbc(key, iv, truncated)
+        assert False, "Should have raised ValueError"
+    except ValueError:
+        assert True

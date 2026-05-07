@@ -23,20 +23,39 @@ def main() -> None:
         conn, addr = s.accept()
         with conn:
             print(f"Connection from {addr}")
-            header = recv_exact(conn, HEADER_SIZE)
-            key, iv, length = parse_header(header)
-            cipher_bytes = recv_exact(conn, length)
-            plaintext = decrypt_des_cbc(key, iv, cipher_bytes)
-            message = plaintext.decode('utf-8', errors='ignore')
-            line = f"[+] Plaintext message: {message}"
-            print(line)
+            try:
+                header = recv_exact(conn, HEADER_SIZE)
+                key, iv, length = parse_header(header)
+                cipher_bytes = recv_exact(conn, length)
+                plaintext = decrypt_des_cbc(key, iv, cipher_bytes)
+                message = plaintext.decode('utf-8', errors='ignore')
+                line = f"[+] Plaintext message: {message}"
+                print(line)
 
-            if OUTPUT_FILE:
-                with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
-                    f.write(message)
-            if LOG_FILE:
-                with open(LOG_FILE, 'w', encoding='utf-8') as f:
-                    f.write(line + '\n')
+                if OUTPUT_FILE:
+                    with open(OUTPUT_FILE, 'w', encoding='utf-8') as f:
+                        f.write(message)
+                if LOG_FILE:
+                    with open(LOG_FILE, 'w', encoding='utf-8') as f:
+                        f.write(line + '\n')
+            except ValueError as e:
+                error_msg = f"[-] Decryption or parsing error: {e}"
+                print(error_msg)
+                if LOG_FILE:
+                    with open(LOG_FILE, 'w', encoding='utf-8') as f:
+                        f.write(error_msg + '\n')
+            except ConnectionError as e:
+                error_msg = f"[-] Connection error: {e}"
+                print(error_msg)
+                if LOG_FILE:
+                    with open(LOG_FILE, 'w', encoding='utf-8') as f:
+                        f.write(error_msg + '\n')
+            except Exception as e:
+                error_msg = f"[-] Unexpected error: {e}"
+                print(error_msg)
+                if LOG_FILE:
+                    with open(LOG_FILE, 'w', encoding='utf-8') as f:
+                        f.write(error_msg + '\n')
 
 
 if __name__ == '__main__':

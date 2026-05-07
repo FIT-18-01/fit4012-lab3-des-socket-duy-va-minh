@@ -15,3 +15,13 @@ def test_build_packet_contains_correct_length():
     assert iv2 == iv
     assert length == len(cipher_bytes)
     assert packet[20:] == cipher_bytes
+
+
+def test_parse_header_with_invalid_length():
+    # Create a header with length not multiple of 8 or something, but parse_header doesn't check
+    # Actually, parse_header just unpacks, so to test error, perhaps invalid header size
+    try:
+        parse_header(b"short")
+        assert False, "Should raise ValueError"
+    except ValueError:
+        assert True
